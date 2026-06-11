@@ -1,0 +1,24 @@
+/* 기본 본문 폰트 설정 및 배경색 지정 */
+body {
+    font-family: 'Nanum Gothic', sans-serif;
+    background-color: #f3ebfc; /* 이미지의 연한 보라색 배경 느낌 반영 */
+}
+
+/* 제목 등 주요 헤드라인 글꼴 지정 (주아체) */
+.title-font {
+    font-family: 'Jua', sans-serif;
+}
+
+/* 학년 및 추천 버튼 클릭/터치 반응 바운스 애니메이션 */
+.btn-bounce {
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.btn-bounce:active {
+    transform: scale(0.97);
+}
+
+/* 주제가 새로고침 될 때 텍스트가 자연스럽게 나타나도록 함 */
+#topicText {
+    transition: opacity 0.15s ease-in-out;
+}

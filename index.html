@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아침 글쓰기 주제 추천 - 임선생님</title>
+    <!-- Tailwind CSS CDN 사용 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 구글 폰트 (나눔고딕 & 주아체) 불러오기 -->
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <!-- 외부 스타일시트 연결 -->
+    <link rel="stylesheet" href="style.css">
+    <!-- 외부 자바스크립트 연결 (defer 속성으로 HTML 렌더링 후 실행) -->
+    <script src="script.js" defer></script>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <!-- 메인 카드 컨테이너 -->
+    <div class="w-full max-w-md bg-white border-2 border-[#9e7ecc] rounded-3xl shadow-xl overflow-hidden flex flex-col justify-between p-6 min-h-[640px] relative">
+        
+        <!-- 상단 헤더 영역 -->
+        <div class="text-center mt-2">
+            <!-- 학교/교실 이모지 일러스트 -->
+            <div class="flex justify-center mb-1">
+                <span class="text-4xl">🏫</span>
+            </div>
+            <h1 class="text-2xl font-extrabold text-[#543d75] tracking-tight title-font">서봉초등학교</h1>
+            <h2 class="text-3xl font-extrabold text-[#794acf] mt-1 title-font">아침 글쓰기 주제 추천</h2>
+            <p class="text-xs text-[#8c6a9b] mt-2 tracking-wider uppercase font-semibold">Morning Writing Program · 2026</p>
+        </div>
+
+        <!-- 중앙 콘텐츠 영역 -->
+        <div class="my-6 flex-grow flex flex-col justify-center">
+            
+            <!-- 캐릭터 아이콘 박스 -->
+            <div class="flex justify-center mb-6">
+                <div class="w-20 h-20 bg-gradient-to-br from-[#ffe76c] to-[#ffbe1a] rounded-2xl flex items-center justify-center shadow-md border border-[#f0c422] animate-bounce">
+                    <span class="text-4xl">✏️</span>
+                </div>
+            </div>
+
+            <!-- 안내 텍스트 -->
+            <div class="text-center mb-4">
+                <h3 class="text-lg font-bold text-[#543d75]">오늘 아침, 어떤 글을 써볼까요?</h3>
+                <p class="text-xs text-gray-400 mt-1">학년을 선택하면 알맞은 주제를 선물해 드려요! ✨</p>
+            </div>
+
+            <!-- 학년 선택 그리드 버튼 (1~6학년) -->
+            <div class="grid grid-cols-3 gap-2 mb-4" id="gradeContainer">
+                <button onclick="selectGrade(1)" id="btn-1" class="btn-bounce bg-[#fdfaf2] hover:bg-[#fff7d9] border border-gray-200 text-gray-700 font-bold py-2.5 px-2 rounded-xl text-sm shadow-sm">1학년</button>
+                <button onclick="selectGrade(2)" id="btn-2" class="btn-bounce bg-[#fdfaf2] hover:bg-[#fff7d9] border border-gray-200 text-gray-700 font-bold py-2.5 px-2 rounded-xl text-sm shadow-sm">2학년</button>
+                <button onclick="selectGrade(3)" id="btn-3" class="btn-bounce bg-[#fdfaf2] hover:bg-[#fff7d9] border border-gray-200 text-gray-700 font-bold py-2.5 px-2 rounded-xl text-sm shadow-sm">3학년</button>
+                <button onclick="selectGrade(4)" id="btn-4" class="btn-bounce bg-[#fdfaf2] hover:bg-[#fff7d9] border border-gray-200 text-gray-700 font-bold py-2.5 px-2 rounded-xl text-sm shadow-sm">4학년</button>
+                <button onclick="selectGrade(5)" id="btn-5" class="btn-bounce bg-[#fdfaf2] hover:bg-[#fff7d9] border border-gray-200 text-gray-700 font-bold py-2.5 px-2 rounded-xl text-sm shadow-sm">5학년</button>
+                <button onclick="selectGrade(6)" id="btn-6" class="btn-bounce bg-[#fdfaf2] hover:bg-[#fff7d9] border border-gray-200 text-gray-700 font-bold py-2.5 px-2 rounded-xl text-sm shadow-sm">6학년</button>
+            </div>
+
+            <!-- 주제 노출 카드 영역 -->
+            <div id="topicBox" class="bg-[#fffdf0] border border-[#f5db84] rounded-2xl p-4 min-h-[110px] flex flex-col justify-center items-center text-center transition-all duration-300 shadow-inner">
+                <span class="text-xl mb-1">💡</span>
+                <p id="topicText" class="text-sm md:text-base font-bold text-[#705828] leading-relaxed">
+                    글쓰기를 시작할 학년을 위에서 터치해 주세요!
+                </p>
+            </div>
+
+            <!-- 다른 주제 살펴보기 버튼 -->
+            <button id="refreshBtn" onclick="refreshTopic()" class="btn-bounce mt-4 hidden w-full bg-gradient-to-r from-[#ffcf25] to-[#ffa700] hover:from-[#ffd438] hover:to-[#ffb31a] text-white font-extrabold py-3.5 px-4 rounded-2xl shadow-md border-b-4 border-[#cc8500] text-center flex items-center justify-center gap-2 text-base">
+                🚀 다른 주제 살펴보기
+            </button>
+
+        </div>
+
+        <!-- 하단 일러스트 및 꾸미기 영역 -->
+        <div class="border-t border-dashed border-gray-200 pt-4 pb-6">
+            <div class="flex justify-around items-center">
+                <div class="flex flex-col items-center">
+                    <span class="text-2xl">🎨</span>
+                    <span class="text-[10px] text-gray-400 mt-1 font-bold">자유로운 상상</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="text-2xl">🌱</span>
+                    <span class="text-[10px] text-gray-400 mt-1 font-bold">생각의 싹을 틔우기</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="text-2xl">📖</span>
+                    <span class="text-[10px] text-gray-400 mt-1 font-bold">마음의 키 자라기</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 만든 사람 푸터 영역 -->
+        <div class="absolute bottom-2 left-0 right-0 text-center">
+            <p class="text-[10px] text-gray-400 font-medium">
+                made with ❤️ by lim teacher
+            </p>
+            <p class="text-[9px] text-gray-300 mt-0.5">
+                모든 권한은 임선생님 학급 교실에 있습니다.
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>
