@@ -1,7 +1,7 @@
 /* 기본 본문 폰트 설정 및 배경색 지정 */
 body {
     font-family: 'Nanum Gothic', sans-serif;
-    background-color: #f3ebfc; /* 이미지의 연한 보라색 배경 느낌 반영 */
+    background-color: #f3ebfc;
 }
 
 /* 제목 등 주요 헤드라인 글꼴 지정 (주아체) */
@@ -9,16 +9,52 @@ body {
     font-family: 'Jua', sans-serif;
 }
 
-/* 학년 및 추천 버튼 클릭/터치 반응 바운스 애니메이션 */
+/* 터치 및 버튼 클릭 바운딩 애니메이션 효과 */
 .btn-bounce {
     transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
 .btn-bounce:active {
-    transform: scale(0.97);
+    transform: scale(0.96);
 }
 
-/* 주제가 새로고침 될 때 텍스트가 자연스럽게 나타나도록 함 */
-#topicText {
-    transition: opacity 0.15s ease-in-out;
+/* 탭 전환 트랜지션 처리 */
+.tab-content {
+    animation: fadeIn 0.25s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 심플한 커스텀 스크롤바 디자인 */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #fdfaf2;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #ccbbf8;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #9e7ecc;
+}
+
+/* 체크박스 전용 통통 튀는 애니메이션 효과 */
+input[type="checkbox"] {
+    accent-color: #794acf;
+    transition: transform 0.2s ease-in-out;
+}
+input[type="checkbox"]:hover {
+    transform: scale(1.1);
 }
